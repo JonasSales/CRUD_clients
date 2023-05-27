@@ -1,30 +1,27 @@
+from app import Menu_client
+from app import Menu_endereco
 import os
-from client import Client, listar_clientes
 
-Client.show_options()
+
+def menu_principal():
+    print("[1] Para ir ao menu de clientes")
+    print("[2] Para ir ao menu de endereços")
+    print("[3] Para sair do programa")
+
 while True:
-    action = int(input("Digite um dos números indicados para realizar alguma tarefa:"))
-    if action == 1:  # Adicionar novos clientes
+    menu_principal()
+    action = int(input("Digite um dos números indicados"
+                        "para realizar alguma tarefa:"))
+    if action == 1:
         os.system('cls')
-        Client.adicionar_clientes()
-        Client.show_options()
-    elif action == 2:  # Listar todos os clientes
+        Menu_client.menu_client()
+    elif action == 2:
         os.system('cls')
-        listar_clientes()
-        Client.show_options()
-    elif action == 3:  # Atualizar um cliente já cadastrado
-        os.system('cls')
-        Client.atualizar_clientes()
-        Client.show_options()
-    elif action == 4:  # Remover um cliente
-        os.system('cls')
-        listar_clientes()
-        Client.deletar_clientes()
-        Client.show_options()
-    elif action == 5:
+        Menu_endereco.menu_endereco()
+    elif action == 3:
         os.system('cls')
         break
     else:
         os.system('cls')
-        print("Ação inválida,cheque ações válidas abaixo:")
-        Client.show_options()
+        print("Ação invalida, veja uma ação válida abaixo:")
+
