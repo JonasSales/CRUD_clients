@@ -61,7 +61,7 @@ class Client:
         print("[5] Para voltar ao menu principal")
 
 def list_client():
-    cur.execute("SELECT * FROM clientes")
+    cur.execute("SELECT * FROM clientes ORDER BY ID")
     result = cur.fetchall()
     for dados in result:
         data = datetime.strptime(f"{dados[5]}", '%Y-%m-%d')

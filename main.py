@@ -11,7 +11,7 @@ def menu_principal():
 while True:
     menu_principal()
     action = int(input("Digite um dos números indicados"
-                        "para realizar alguma tarefa:"))
+                        " para realizar alguma tarefa:"))
     if action == 1:
         os.system('cls')
         Menu_client.menu_client()

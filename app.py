@@ -98,26 +98,85 @@ class Menu_endereco:
 
 
 def dados_enderecos():
-    cep = input("Digite o novo CEP:")
-    endereco = input("Digite o novo enredeço:")
-    numero = input("Digite o novo número:")
+    try:
+        while True:
+            try:
+                cep = int(input("Digite o novo CEP:"))
+                if len(str(cep)) != 8:
+                    os.system('cls')
+                    print("O CEP deve ter 8 números")
+                else:
+                    break
+            except ValueError:
+                    os.system('cls')
+                    print("Apenas números")
+
+        while True:
+            numero = input("Digite o novo número:")
+            try:
+                numero = int(numero)
+                break
+            except ValueError:
+                os.system('cls')
+                print("Apenas números.")
+    except:
+        pass
+
+    endereco = input("Digite o novo endereço:")
     complemento = input("Digite o novo complemento:")
     bairro = input("Digite o novo bairro:")
     cidade = input("Digite a nova cidade:")
     estado = input("Digite o novo estado:")
-    return (cep,endereco,numero,complemento
-            ,bairro,cidade,estado)
+    return (cep,endereco,numero,complemento,
+            bairro,cidade,estado)
+       
 
 
-
-def dados_cliente():
+def dados_cliente():   
     nome = input("Digite o novo nome do usuário:")
     sobrenome = input("Digite o novo sobrenome do usuário:")
-    cpf = input("Digite o novo cpf do usuário:")
-    fone = input("Digite o novo telefone do usuário:")
-    data_string = input("Digite a data de seu nascimento:")
+    try:
+        while True:
+            try:
+                cpf = int(input("Digite o novo CPF do usuário:"))
+                if len(str(cpf)) == 11:
+                    break
+                else:
+                    os.system('cls')
+                    print("CPF inválido, ele deve conter 11 digitos.")
+            except ValueError:
+                    print("Apenas números.")
+                    
+        while True:
+            try:
+                fone = int(input("Digite o novo telefone do usuário, no formato (DD+Número):"))
+                if len(str(fone)) == 11 and 12:
+                    break
+                else:
+                    os.system('cls')
+                    print("Telefone inválido! o número deve conter 11 ou 12 "
+                            "números no formato (DD+Número).")
+            except ValueError:
+                os.system('cls')
+                print("Telefone inválido! Digite apenas "
+                        "números.")
+    except:
+        pass
+        
     data_atual = datetime.now()
     data_atual = data_atual.strftime('%Y%m%d')
-    data = datetime.strptime(data_string, '%d/%m/%Y')
-    nascimento = data.strftime('%Y%m%d')
-    return (nome,sobrenome,cpf,fone,nascimento,data_atual)
+            
+    while True:
+        try:
+            data_string = input("Digite a data de seu nascimento (formato dd/mm/aaaa):")
+            data = datetime.strptime(data_string, '%d/%m/%Y')
+            nascimento = data.strftime('%Y%m%d')
+            break
+        except ValueError:
+            os.system('cls')
+            print("Data inválida! Digite novamente no formato dd/mm/aaaa.\n"
+                    "Reinicie o processo novamente.")
+            
+    return (nome, sobrenome, cpf, fone,
+            nascimento, data_atual)
+        

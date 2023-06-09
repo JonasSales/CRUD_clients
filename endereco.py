@@ -60,7 +60,7 @@ class Endereco:
         
     @staticmethod
     def list_address():
-        cur.execute("SELECT * FROM enderecos")
+        cur.execute("SELECT * FROM enderecos ORDER BY cliente_id;")
         result = cur.fetchall()
         for dados in result:
             print(f"CEP:{dados[1]} Endereço:{dados[2]} "
@@ -73,7 +73,7 @@ class Endereco:
         print("[1] Para adicionar novos endereços")
         print("[2] Para listar todos os endereços")
         print("[3] Para atualizar um endereços já cadastrado")
-        print("[4] Para remover algum endereços")
+        print("[4] Para remover algum endereço")
         print("[5] Para voltar ao menu principal")
 
 cur = conn.cursor()
