@@ -1,5 +1,5 @@
 import os
-from client import Client, list_client
+from client import Client
 from endereco import Endereco
 from datetime import datetime
 
@@ -19,13 +19,27 @@ class Menu_client:
                     dados[4],dados[5],'')
                 cliente.add_client()
                 Client.show_options()
-            elif action == 2:  # Listar todos os clientes
+            elif action == 2:  # Lista os clientes ativos.
                 os.system('cls')
-                list_client()
+                Client.list_ative_client()
                 Client.show_options()
-            elif action == 3:  # Atualizar um cliente já cadastrado
+            elif action == 3: #Lista os clientes desativados.
                 os.system('cls')
-                list_client()
+                Client.list_desative_client()
+                Client.show_options()
+            elif action == 4: #Ativa um cliente desativado.
+                os.system('cls')
+                Client.list_desative_client()
+                Client.activate_client()
+                Client.show_options()
+            elif action == 5:  # Remover um cliente.
+                os.system('cls')
+                Client.list_ative_client()
+                Client.delete_client()
+                Client.show_options()
+            elif action == 6: #Atualizar um cliente.
+                os.system('cls')
+                Client.list_ative_client()
                 id_typed = int(input("Digite o ID do cliente "
                                      "para atualizamos os dados:"))
                 dados = (dados_cliente())
@@ -34,12 +48,7 @@ class Menu_client:
                 os.system('cls')
                 cliente.update_client()
                 Client.show_options()
-            elif action == 4:  # Remover um cliente
-                os.system('cls')
-                list_client()
-                Client.delete_client()
-                Client.show_options()
-            elif action == 5:
+            elif action == 7: #Para o programa
                 os.system('cls')
                 break
             else:
@@ -59,7 +68,7 @@ class Menu_endereco:
                                 "para realizar alguma tarefa:"))
             if action == 1:  # Adicionar novos clientes
                 os.system('cls')
-                list_client()
+                Client.list_ative_client()
                 id_typed = int(input("Digite o ID do cliente para "
                                       "adicionamos o endereço:"))
                 dados = (dados_enderecos())

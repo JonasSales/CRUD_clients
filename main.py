@@ -10,18 +10,21 @@ def menu_principal():
 
 while True:
     menu_principal()
-    action = int(input("Digite um dos números indicados"
-                        " para realizar alguma tarefa:"))
-    if action == 1:
+    try:    
+        action = int(input("Digite um dos números indicados"
+                            " para realizar alguma tarefa:"))
+        if action == 1:
+            os.system('cls')
+            Menu_client.menu_client()
+        elif action == 2:
+            os.system('cls')
+            Menu_endereco.menu_endereco()
+        elif action == 3:
+            os.system('cls')
+            break
+        else:
+            os.system('cls')
+            print("Ação invalida, veja uma ação válida abaixo:")
+    except ValueError:
         os.system('cls')
-        Menu_client.menu_client()
-    elif action == 2:
-        os.system('cls')
-        Menu_endereco.menu_endereco()
-    elif action == 3:
-        os.system('cls')
-        break
-    else:
-        os.system('cls')
-        print("Ação invalida, veja uma ação válida abaixo:")
-
+        print("Digite uma opção válida.")
